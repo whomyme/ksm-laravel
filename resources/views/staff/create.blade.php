@@ -11,11 +11,34 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <h1>Title</h1>
         <div class="card">
             <div class="card-body">
-                test
+                <form action="/staffs" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" name="name" placeholder="Staff's Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="text" name="email" placeholder="Staff's Email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" name="address" cols="30" rows="10"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input class="form-control" type="text" name="phone" placeholder="Staff's Phone Number">
+                    </div>
+
+                    <button class="btn btn-success float-end" type="submit">Save</button>
+                </form>
             </div>
         </div>
     </div>
