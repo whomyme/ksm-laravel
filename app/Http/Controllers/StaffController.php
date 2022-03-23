@@ -14,7 +14,9 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        return view('staff.index', [
+            'staffs' => Staff::paginate(10),
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('staff.create');
     }
 
     /**
@@ -46,7 +48,9 @@ class StaffController extends Controller
      */
     public function show(Staff $staff)
     {
-        //
+        return view('staff.show', [
+            'staff' => $staff
+        ]);
     }
 
     /**
@@ -57,7 +61,9 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        //
+        return view('staff.edit', [
+            'staff' => $staff
+        ]);
     }
 
     /**
@@ -80,6 +86,7 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
-        //
+        $staff->delete();
+        return redirect('staffs')->with('status', $staff->name . ' Deleted');
     }
 }
