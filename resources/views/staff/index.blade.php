@@ -12,10 +12,48 @@
 
 <body>
     <div class="container">
-        <h1>Title</h1>
+        <h1>Senarai Staff</h1>
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
-                test
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($staffs as $key => $staff)
+                            <tr>
+                                <td>{{ $staffs->firstItem() + $key }}</td>
+                                <td>{{ $staff->name }}</td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="/staffs/{{ $staff->id }}/edit" class="btn mx-2 btn-warning">Edit</a>
+                                        <a href="/staffs/{{ $staff->id }}" class="btn mx-2 btn-info">View</a>
+                                        <form action="/staffs/{{ $staff->id }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn mx-2 btn-danger" type="submit">Delete</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3">No Staff</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+
+                {{ $staffs->links() }}
             </div>
         </div>
     </div>
