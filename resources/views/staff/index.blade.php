@@ -11,8 +11,17 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Senarai Staff</h1>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-10">
+
+                <h1>Senarai Staff</h1>
+            </div>
+            <div class="col-2">
+                <a href="/staffs/create" class="btn btn-outline-primary float-end">Create New</a>
+            </div>
+        </div>
+
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
