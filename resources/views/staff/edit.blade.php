@@ -11,11 +11,38 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Title</h1>
+    <div class="container mt-5">
+        <h1>Edit Staff {{ $staff->name }}</h1>
         <div class="card">
             <div class="card-body">
-                test
+                <form action="/staffs/{{ $staff->id }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" value="{{ $staff->name }}" type="text" name="name"
+                            placeholder="Staff's Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" value="{{ $staff->email }}" type="text" name="email"
+                            placeholder="Staff's Email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" name="address" cols="30" rows="10">{{ $staff->address }}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input class="form-control" value="{{ $staff->phone }}" type="text" name="phone"
+                            placeholder="Staff's Phone Number">
+                    </div>
+
+                    <button class="btn btn-success float-end" vtype="submit">Save</button>
+                </form>
             </div>
         </div>
     </div>

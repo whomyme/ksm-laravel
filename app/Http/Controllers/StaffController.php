@@ -90,7 +90,21 @@ class StaffController extends Controller
      */
     public function update(Request $request, Staff $staff)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|min:5',
+            'email' => 'required|email|unique:users,email',
+            'address' => 'required|string|min:5',
+            'phone' => 'required|string|min:3'
+        ]);
+
+        $staff->name = $validated['name'];
+        $staff->email = $validated['email'];
+        $staff->address = $validated['address'];
+        $staff->phone = $validated['phone'];
+        $staff->save();
+
+
+        return redirect('staffs')->with('status', $staff->name . ' Updated');
     }
 
     /**

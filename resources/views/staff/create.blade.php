@@ -12,7 +12,7 @@
 
 <body>
     <div class="container mt-5">
-        <h1>Title</h1>
+        <h1>Create New Staff</h1>
         <div class="card">
             <div class="card-body">
                 <form action="/staffs" method="post">
