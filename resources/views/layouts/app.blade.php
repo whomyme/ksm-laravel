@@ -10,7 +10,7 @@
     <title>Sistem Staff</title>
 </head>
 
-<body>
+<body class="p-3 mb-2 bg-dark text-white">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
