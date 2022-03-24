@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StaffController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,7 @@ Route::get('/blade', function () {
 Route::get('/blade1', function () {
     return view('child1');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
