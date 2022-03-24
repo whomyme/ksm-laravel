@@ -15,6 +15,15 @@
             <div class="card-body">
                 <form action="/staffs" method="post">
                     @csrf
+                    @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input class="form-control" type="text" name="name" placeholder="Staff's Name">

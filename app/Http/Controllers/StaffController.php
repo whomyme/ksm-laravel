@@ -44,13 +44,16 @@ class StaffController extends Controller
             'phone' => 'required|string|min:3'
         ]);
 
+        $user = auth()->user();
+
         $staff = new Staff();
         $staff->name = $validated['name'];
         $staff->email = $validated['email'];
         $staff->address = $validated['address'];
         $staff->phone = $validated['phone'];
-        $staff->save();
+        // $staff->save();
 
+        $user->staffs()->save($staff);
 
         return redirect('staffs')->with('status', $staff->name . ' Created');
     }
