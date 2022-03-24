@@ -84,6 +84,8 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
+        $this->authorize('view', $staff);
+
         return view('staff.edit', [
             'staff' => $staff
         ]);
@@ -123,6 +125,8 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
+        $this->authorize('view', $staff);
+
         $staff->delete();
         return redirect('staffs')->with('status', $staff->name . ' Deleted');
     }

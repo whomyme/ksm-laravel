@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class StaffPolicy
 {
@@ -31,7 +32,7 @@ class StaffPolicy
     public function view(User $user, Staff $staff)
     {
         //
-        return $staff->user_id === $user->id;
+        return $staff->user_id === $user->id ? Response::allow() : Response::deny('Insaf lah wahai teman');
     }
 
     /**
@@ -55,6 +56,7 @@ class StaffPolicy
     public function update(User $user, Staff $staff)
     {
         //
+        return $staff->user_id === $user->id ? Response::allow() : Response::deny('Insaf lah wahai teman');
     }
 
     /**
@@ -67,6 +69,7 @@ class StaffPolicy
     public function delete(User $user, Staff $staff)
     {
         //
+        return $staff->user_id === $user->id ? Response::allow() : Response::deny('Insaf lah wahai teman');
     }
 
     /**
