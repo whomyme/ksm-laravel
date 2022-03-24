@@ -19,8 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::resource('staffs', StaffController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('staffs', StaffController::class);
+});
+// Route::resource('staffs', StaffController::class);
 
 Route::get('/blade', function () {
     return view('child');
