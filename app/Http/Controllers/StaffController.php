@@ -69,6 +69,8 @@ class StaffController extends Controller
      */
     public function show(Staff $staff)
     {
+        $this->authorize('view', $staff);
+
         return view('staff.show', [
             'staff' => $staff
         ]);
