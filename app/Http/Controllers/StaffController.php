@@ -14,8 +14,11 @@ class StaffController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+
         return view('staff.index', [
-            'staffs' => Staff::paginate(10),
+            // 'staffs' => Staff::paginate(10),
+            'staffs' => $user->staffs()->paginate(10),
         ]);
     }
 

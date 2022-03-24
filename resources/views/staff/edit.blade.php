@@ -15,6 +15,15 @@
             <div class="card">
                 <div class="card-body">
                     <form action="/staffs/{{ $staff->id }}" method="post">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         @csrf
                         @method('PUT')
                         <div class="form-group">
